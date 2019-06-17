@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, FlatList } from 'react-native';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import axios from 'axios';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { Item, Card } from 'native-base';
 
 class ViewJobs extends Component {
   constructor(props) {
@@ -23,17 +25,33 @@ class ViewJobs extends Component {
   }
   render() {
     return (
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
         {this.state.allJobs.map(item => {
           return (
-            <View key={item._id}>
-              <Text style={{ fontSize: 30 }}>{item.job}</Text>
-              <Text style={{ color: '#555' }}>{item.description}</Text>
-              <Text>Number Of Vacancy:{item.numberOfVacancy}</Text>
-            </View>
+            <TouchableOpacity
+              key={item._id}
+              onPress={() =>
+                this.props.navigation.navigate('ViewDetails', {
+                  key: item._id,
+                  job: item.job,
+                  description: item.description,
+                  numberOfVacancy: item.numberOfVacancy
+                })
+              }
+            >
+              <View>
+                <Card>
+                  <Text style={{ fontSize: 30 }}>{item.job}</Text>
+                  <Text style={{ color: '#555', alignItems: 'center' }}>
+                    {item.description}
+                  </Text>
+                  <Text>Number Of Vacancy:{item.numberOfVacancy}</Text>
+                </Card>
+              </View>
+            </TouchableOpacity>
           );
         })}
-      </View>
+      </ScrollView>
     );
   }
 }

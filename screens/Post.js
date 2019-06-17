@@ -6,7 +6,7 @@ import {
   TouchableWithoutFeedback,
   Keyboard
 } from 'react-native';
-import { Button, Form, Item, Label, Input } from 'native-base';
+import { Button, Item, Label, Input } from 'native-base';
 import axios from 'axios';
 const url = 'http://localhost:3000/';
 
