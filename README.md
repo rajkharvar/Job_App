@@ -1,3 +1,3 @@
-# A Simple react native app having backend of Job_Api
+# ReactNativeJobApp
 
-[Job Api](https://github.com/rpk79/Job_API)
+A Simple react native app having backend of [Job Api](https://github.com/rpk79/Job_API)
